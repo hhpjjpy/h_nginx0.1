@@ -21,7 +21,11 @@ typedef void(*hgx_event_handler_pt)(hgx_event *ev);
 #define  HGX_BUSY      -3
 #define  HGX_DONE      -4
 #define  HGX_DECLINED  -5
-#define  HGX_ABORT     -6
+#define  HGX_ABORT     -6d
+
+
+
+#include "../base/hgx_palloc.h"
 
 
 
