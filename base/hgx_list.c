@@ -1,5 +1,15 @@
 #include "hgx_list.h"
 //与原实现有差别，使用时要注意，只能声明指针，然后调用init,list的内存完全使用pool中的内存
+
+hgx_list *create_init_list(hgx_pool *pool,unsigned int n,size_t size){
+	hgx_list *list;
+	if (hgx_list_init(&list, pool, n, size) == 0){
+		return list;
+	}
+
+	return NULL;
+}
+
 int hgx_list_init(hgx_list **plist,hgx_pool *pool,unsigned int n,size_t size) { //注意在函数中改变传入对象的内容，必须使用该对象的指针，或引用（c++）
 	if (((*plist) = hgx_pcalloc(pool, sizeof(hgx_list) + n*size)) == NULL) {  //特别是所传递的对象是指针的时候，要注意区分是要使用该指针获取还是要改
 		return HGX_ERROR;                                                     //变该指针的内容。比如此处。。。注意！！！！！！原bug应发为参数为（*list）
