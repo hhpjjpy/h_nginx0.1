@@ -9,7 +9,7 @@ hgx_array *hgx_create_init_array(hgx_pool *pool,unsigned int n,size_t size){
 	a->nums = 0;
 	a->size = size;
 	a->nalloc = n;
-	a->pool;
+	a->pool = pool;
 	a->datas = hgx_palloc(pool,n*size);
 	if (a->datas == NULL)
 		return NULL;

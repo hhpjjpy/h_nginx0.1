@@ -1,6 +1,7 @@
 #include "hgx_array.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define TESTNULL(p,msg) if(p==NULL){ printf("error :%s \n",msg); exit(-1); }
 
@@ -14,7 +15,7 @@ int main(){
 
 	int count = 0;
 	while (count < 10000){
-		void *p = hgx_push_array(pool);
+		void *p = hgx_push_array(a);
 		TESTNULL(p, " push array error ")
 		*((int*)(p)) = count;
 		count++;
@@ -22,12 +23,9 @@ int main(){
 	
 	//±éÀúÒ»±é
 
-	
-
-
-
-
-
-
+	for (int i = 0; i < count; i++){
+		int num = *(((int*)a->datas) + i);
+		printf("num %d \n",num);
+	}
 
 }
